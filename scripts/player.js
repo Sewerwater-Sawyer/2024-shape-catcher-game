@@ -11,7 +11,7 @@ export class Player{
         this.speed = 1;
 
         this.keyBindings = {
-            up: "ArrowUP",
+            up: "ArrowUp",
             down: "ArrowDown",
             left: "ArrowLeft",
             right: "ArrowRight",
@@ -93,7 +93,7 @@ export class Player{
         }
 
         if(this.moving.right) {
-            dirX = -1;
+            dirX = 1;
         }
 
         if(this.moving.left && this.moving.right) {
