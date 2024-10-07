@@ -5,10 +5,10 @@ export class Player{
     constructor(x = 0, y = 0) {
         this.x = x;
         this.y = y;
-        this.width = 75;
-        this.height = 25;
+        this.width = 25;
+        this.height = 75;
 
-        this.speed = 15;
+        this.speed = 5;
 
         this.keyBindings = {
             up: "ArrowUp",
