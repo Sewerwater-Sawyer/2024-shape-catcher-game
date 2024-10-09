@@ -1,5 +1,6 @@
 //@ts-check
 
+import { SimpleGoodItem } from "./collectables/good.js";
 import { canvas } from "./common/canvas.js";
 import { Player } from "./player.js";
 
@@ -13,11 +14,14 @@ export class GameManager {
 
         this.goodSpawn = {
             lastTime: 0,
-            nextTime: Math.min(rand(15), 5),
-            getNewNext: function() {
-                this.nextTime = Math.min(rand(15), 5);
+            nextTime: 0,
+            next: function() {
+                this.lastTime = 0;
+                this.nextTime = rand(2 * 1000, 6 * 1000);
             }
         };
+
+        this.spawner(0);
 	}
 
 	initialize() {
@@ -30,6 +34,8 @@ export class GameManager {
 	}
 
     update(elapsedTime) {
+        this.spawner(elapsedTime);
+
         this.players.forEach(p => {
             p.update();
         })
@@ -40,7 +46,18 @@ export class GameManager {
     }
     
     spawner(elapsedTime) {
-
+        this.goodSpawn.lastTime += elapsedTime;
+        if(this.goodSpawn.lastTime > this.goodSpawn.nextTime) {
+            //spawn a good item
+            const buffer = 50;
+            const sx = rand(buffer, canvas.width - buffer);
+            const sy = rand(buffer, canvas.height - buffer);
+            const item = new SimpleGoodItem(sx, sy);
+            this.collectables.push(item);
+            //reset the spawn timer and get a new spawn timer
+            this.goodSpawn.next();
+            debugger;
+        }
     }
 
     draw() {
@@ -54,8 +71,8 @@ export class GameManager {
     }
 }
 
-
-function rand(max = 100) {
-    let r = Math.floor(Math.random() * max);
+function rand(min, max) {
+    let upper = max - min;
+    let r = Math.floor(Math.random() * upper) + min;
     return r;
 } 
