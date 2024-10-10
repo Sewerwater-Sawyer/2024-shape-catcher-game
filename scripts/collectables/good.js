@@ -8,6 +8,9 @@ export class SimpleGoodItem extends CollectableItem {
 		this.width = 25;
 		this.height = 25;
 
+        this.x = x;
+        this.y = y;
+
 		this.despawnTime = 10 * 1000;
 		this.spawnInTime = 5 * 1000;
 		this.despawnWarningTime = 3 * 1000;

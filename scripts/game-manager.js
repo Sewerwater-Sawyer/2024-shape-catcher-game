@@ -76,3 +76,13 @@ function rand(min, max) {
     let r = Math.floor(Math.random() * upper) + min;
     return r;
 } 
+
+function squareCollision() {
+    if(
+        SimpleGoodItem.x + SimpleGoodItem.width >= Player.x&&
+        SimpleGoodItem.x <= Player.x + SimpleGoodItem&&
+        SimpleGoodItem.y + SimpleGoodItem.height >= Player.y&&
+        SimpleGoodItem.y <= Player.y + SimpleGoodItem.height
+    )
+    return true;
+} 
