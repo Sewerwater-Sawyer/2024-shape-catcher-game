@@ -2,7 +2,7 @@
 
 import { SimpleGoodItem } from "./collectables/good.js";
 import { canvas } from "./common/canvas.js";
-import { Player } from "./player.js";
+import { Player, PlayerF, PlayerP, PlayerS } from "./player.js";
 
 export class GameManager {
 	constructor() {
@@ -31,6 +31,27 @@ export class GameManager {
         p1.y -= p1.height / 2;
         
 		this.players.push(p1);
+
+        
+        let p2 = new PlayerS (canvas.width / 2, canvas.height / 3);
+        p2.x -= p2.width / 2;
+        p2.y -= p2.height / 2;
+        
+		this.players.push(p2);
+
+
+        let p3 = new PlayerP (canvas.width / 2, canvas.height / 5);
+        p3.x -= p3.width / 2;
+        p3.y -= p3.height / 2;
+        
+		this.players.push(p3);
+
+
+        let p4 = new PlayerF (canvas.width / 2, canvas.height / 1.5);
+        p4.x -= p4.width / 2;
+        p4.y -= p4.height / 2;
+        
+		this.players.push(p4);
 	}
 
     update(elapsedTime) {
@@ -77,12 +98,12 @@ function rand(min, max) {
     return r;
 } 
 
-function squareCollision() {
-    if(
-        SimpleGoodItem.x + SimpleGoodItem.width >= Player.x&&
-        SimpleGoodItem.x <= Player.x + SimpleGoodItem&&
-        SimpleGoodItem.y + SimpleGoodItem.height >= Player.y&&
-        SimpleGoodItem.y <= Player.y + SimpleGoodItem.height
-    )
-    return true;
-} 
+//function squareCollision() {
+//    if(
+//        SimpleGoodItem.x + SimpleGoodItem.width >= Player.x&&
+//        SimpleGoodItem.x <= Player.x + SimpleGoodItem&&
+//        SimpleGoodItem.y + SimpleGoodItem.height >= Player.y&&
+//        SimpleGoodItem.y <= Player.y + SimpleGoodItem.height
+//    )
+//return true;
+//}
